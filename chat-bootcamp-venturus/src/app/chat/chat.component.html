@@ -1,0 +1,7 @@
+<ul class="messageList list-group" #scrollMe>
+  <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens"></app-chat-item>
+</ul>
+<textarea [(ngModel)]="mensagemInserir" cols="30" rows="10"></textarea>
+<div class="text-right">
+  <button class="btn btn-primary" (click)="enviaMensagem()">Salvar</button>
+</div>

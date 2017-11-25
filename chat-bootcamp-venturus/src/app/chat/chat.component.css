@@ -1,0 +1,9 @@
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.messageList {
+    max-height: 500px;
+    overflow-y: scroll
+}
