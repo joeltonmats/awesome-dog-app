@@ -1,6 +1,6 @@
 import { ChatService } from './chat/chat.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -12,6 +12,13 @@ import { routing } from './app.routes';
 import { SobreComponent } from './sobre/sobre.component';
 import { ConnectionService } from './sobre/connection.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DogLocationComponent } from './dog-location/dog-location.component';
+import { CountriesComponent } from './dog-location/countries/countries.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CountryCitiesComponent } from './dog-location/country-cities/country-cities.component';
+import { AgmCoreModule } from '@agm/core';
+import { UsersComponent } from './dog-location/users/users.component';
+import { UserDetailComponent } from './dog-location/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -20,13 +27,22 @@ import { HttpClientModule } from '@angular/common/http';
     ChatComponent,
     ChatItemComponent,
     ChatHeaderComponent,
-    SobreComponent
+    SobreComponent,
+    DogLocationComponent,
+    CountriesComponent,
+    CountryCitiesComponent,
+    UsersComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAMsEWrQgwNIjlZsstfHIJCwIrG_8RFrs4'
+    })
   ],
   providers: [ChatService, ConnectionService],
   bootstrap: [AppComponent]
