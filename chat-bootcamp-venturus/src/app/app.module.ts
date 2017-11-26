@@ -41,7 +41,7 @@ import { UserDetailComponent } from './dog-location/user-detail/user-detail.comp
     HttpClientModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAMsEWrQgwNIjlZsstfHIJCwIrG_8RFrs4'
+      apiKey: ''
     })
   ],
   providers: [ChatService, ConnectionService],
