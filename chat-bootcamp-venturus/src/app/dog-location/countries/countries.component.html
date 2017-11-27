@@ -1,11 +1,13 @@
 <div class="row">
-  <div class="col">
+  <div class="col-md-7 offset-md-5">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{countrySelected.name}}</button>
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle *ngIf="countryList.length > 0">{{countrySelected.countryName}}</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button class="dropdown-item" *ngFor="let country of countryList" (click)="choiceCountry(country)">
-          {{country.name + ' ('+country.initials+')'}}</button>
+          {{country.countryName + ' ('+country.countryCode+')'}}</button>
       </div>
     </div>
   </div>
 </div>
+
+<app-country-cities [country]="countrySelected"></app-country-cities>

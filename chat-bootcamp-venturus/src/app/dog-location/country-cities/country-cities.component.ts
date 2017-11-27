@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Country } from '../../services/model.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-country-cities',
@@ -7,13 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryCitiesComponent implements OnInit {
 
-  title: string = 'My first AGM project';
+  title: string = 'Cities in ';
   lat: number = 51.678418;
   lng: number = 7.809007;
+  @Input() country: Country
 
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.country = new Country('', '');
+  }
+
+
 
 }

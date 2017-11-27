@@ -19,6 +19,7 @@ import { CountryCitiesComponent } from './dog-location/country-cities/country-ci
 import { AgmCoreModule } from '@agm/core';
 import { UsersComponent } from './dog-location/users/users.component';
 import { UserDetailComponent } from './dog-location/user-detail/user-detail.component';
+import { CountryService } from "./services/country.service";
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { UserDetailComponent } from './dog-location/user-detail/user-detail.comp
       apiKey: ''
     })
   ],
-  providers: [ChatService, ConnectionService],
+  providers: [ChatService, ConnectionService, CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,8 +13,8 @@ export class Country2 {
 export class Country {
 
   constructor(
-    public name: string,
-    public initials: string
+    public countryName: string,
+    public countryCode: string
   ) { }
 
 }

@@ -1,0 +1,9 @@
+.d-inline-block>button {
+    min-width: 180px;
+}
+
+.dropdown-menu.show {
+    display: block;
+    overflow-y: scroll;
+    max-height: 150px;
+}

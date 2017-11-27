@@ -1,3 +1,4 @@
+import { CountryService } from '../../services/country.service';
 import { Country } from '../../services/model.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,13 +12,15 @@ export class CountriesComponent implements OnInit {
   public countryList: Country[] = [];
   public countrySelected: Country;
 
-  constructor() { }
+  constructor(private _countryService: CountryService) { }
 
   ngOnInit() {
-    this.countryList.push({ name: 'Brazil', initials: 'BR' });
-    this.countryList.push({ name: 'United States', initials: 'USA' });
-    this.countryList.push({ name: 'England', initials: 'ENG' });
-    this.countrySelected = this.countryList[0];
+    this._countryService.getCountryAll()
+      .subscribe(res => {
+        console.log(res);
+        this.countryList = res["geonames"];
+        this.countrySelected = this.countryList[0];
+      }
   }
 
   public choiceCountry(countrySelected) {

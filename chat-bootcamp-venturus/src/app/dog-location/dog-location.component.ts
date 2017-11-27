@@ -1,3 +1,4 @@
+import { Country } from '../services/model.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dog-location.component.css']
 })
 export class DogLocationComponent implements OnInit {
+  public country: Country;
 
   constructor() { }
 
