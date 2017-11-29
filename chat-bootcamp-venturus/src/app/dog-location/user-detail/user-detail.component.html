@@ -2,18 +2,26 @@
   <section id="intro" class="intro">
     <div class="page-scroll">
       <a href="#about">
-				<i class="fa fa-angle-down fa-5x animated"></i>
-			</a>
+        <i class="fa fa-angle-down fa-5x animated"></i>
+      </a>
     </div>
   </section>
 
   <!-- Navigation -->
   <div id="navigation">
     <ul class="nav">
-      <li class="nav-item"><a class="nav-link active" href="#intro">My little world</a></li>
-      <li class="nav-item"><a class="nav-link" href="#about">My pictures</a></li>
-      <li class="nav-item"><a class="nav-link" href="#gallery">Favorite Places</a></li>
-      <li class="nav-item"><a class="nav-link disabled" href="#contact">Talk to me</a></li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#intro">My little world</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#about">My pictures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#gallery">Favorite Places</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#contact">Talk to me</a>
+      </li>
     </ul>
   </div>
   <!-- /Navigation -->
@@ -22,6 +30,110 @@
 <ngb-tabset>
   <ngb-tab title="My little world">
     <ng-template ngbTabContent>
+
+      <h1>Initicio</h1>
+      <div class="row">
+        <section class="text-center wrapper-playimg">
+          <div class="col-md-12">
+            <img src="https://s-media-cache-ak0.pinimg.com/originals/6a/02/4e/6a024e8f71164d8b4729e134056c5613.jpg" alt="image demo">
+          </div>
+
+          <div class="col-md-4">
+            <div id="container" align="center">
+              <button class="big-button" data-action="submit">
+                push the button
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="box">
+              <span></span>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            {{toggleAnimmation}}
+            <button class="button-mode-two" (click)="testeFunction()" [ngClass]="{'is-animating':toggleAnimmation}">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="text">Press Me!</span>
+            </button>
+          </div>
+
+
+
+          <!--   <div class="shadow"></div> -->
+
+          <div class="col-md-12">
+            <div class="container">
+
+              Fast, border-radius, vertical background
+              <div class="wrap">
+                <button class="clicker fast">press</button>
+                <div class="circle angled second"></div>
+              </div>
+
+              Faster, no border-radius, 45 deg background
+              <div class="wrap">
+                <button class="clicker faster">press</button>
+                <div class="circle angled third"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                  <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+              </defs>
+            </svg>
+            <div class="demo">
+              <div class="demo__buttons" [ngClass]="{'step-3':open}">
+                <div class="demo__social-btn-1 demo__social-btn">
+                  <i class="fa fa-twitter"></i>
+                </div>
+                <div class="demo__social-btn-2 demo__social-btn">
+                  <i class="fa fa-facebook"></i>
+                </div>
+                <div class="demo__social-btn-3 demo__social-btn">
+                  <i class="fa fa-instagram"></i>
+                </div>
+                <div class="demo__social-btn-4 demo__social-btn">
+                  <i class="fa fa-snapchat"></i>
+                </div>
+                <div class="demo__open-btn" (click)="teste2()">
+                  <i class="fa fa-share-alt"></i>
+                </div>
+              </div>
+              <span class="about-me">Check out my other
+                <a target="_blank" href="https://codepen.io/kiyutink">pens</a> and follow me on
+                <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>
+              </span>
+            </div>
+          </div>
+
+
+        </section>
+      </div>
+
+
+
+
+
+
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
         cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
         synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
@@ -29,7 +141,8 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab>
-    <ng-template ngbTabTitle><b>My</b> Pictures</ng-template>
+    <ng-template ngbTabTitle>
+      <b>My</b> Pictures</ng-template>
     <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
       <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
         beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
@@ -99,7 +212,9 @@
         </div>
       </div>
       <div class="col-md-8 ">
-        <p><strong>You'll Love me so much</strong></p>
+        <p>
+          <strong>You'll Love me so much</strong>
+        </p>
         <p>See my rates :)</p>
 
 
