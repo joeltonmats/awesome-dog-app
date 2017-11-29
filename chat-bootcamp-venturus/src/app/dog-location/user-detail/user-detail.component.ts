@@ -60,9 +60,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   public testeFunction() {
-    window.requestAnimationFrame(() => {
-      this.toggleAnimmation = !this.toggleAnimmation;
-    });
+    this.toggleAnimmation = !this.toggleAnimmation;
+    
 
   }
 
