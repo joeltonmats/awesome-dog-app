@@ -1,0 +1,58 @@
+.view {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.view p {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.view img {
+    max-width: 100%;
+    max-height: 138px;
+}
+
+.caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(70, 216, 210, 0.44);
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: none;
+    text-align: center;
+    color: #fff !important;
+    z-index: 2;
+}
+
+.caption a {
+    padding-right: 10px;
+    color: #fff;
+}
+
+.info {
+    display: block;
+    padding: 10px;
+    background: #eee;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: right;
+}
+
+.info p,
+.stats p {
+    margin-bottom: 0;
+}
+
+.stats {
+    display: block;
+    padding: 10px;
+    color: white;
+}
+
+.turqbg {
+    background-color: #46D8D2;
+}

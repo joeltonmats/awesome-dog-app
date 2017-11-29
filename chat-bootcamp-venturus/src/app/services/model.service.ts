@@ -19,3 +19,19 @@ export class Country {
 
 }
 
+export class City {
+  constructor(
+    public name: string,
+    public lng: string,
+    public lat: string
+  ) { }
+}
+
+export class CityMarker {
+  constructor(
+    public city: City,
+    public map: string = 'map',
+    public title: string
+  ) { }
+}
+

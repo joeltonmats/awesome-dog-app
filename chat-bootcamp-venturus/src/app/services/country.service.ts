@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Country } from './model.service';
+import { City, Country } from './model.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
@@ -18,6 +18,12 @@ export class CountryService {
 
     return this.http.get<Country[]>(urlGetCountryAll);
 
+  }
+
+  getCityByCountryCode(countryCode: string): Observable<City[]> {
+    const urlGetCityByCountryCode = `${this.serverUrl}citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=${this.userName}&countrycode=${countryCode}`;
+
+    return this.http.get<City[]>(urlGetCityByCountryCode);
   }
 
 }
