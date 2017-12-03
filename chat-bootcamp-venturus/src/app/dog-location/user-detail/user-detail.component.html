@@ -7,127 +7,115 @@
     </div>
   </section>
 
-  <!-- Navigation -->
-  <div id="navigation">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#intro">My little world</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#about">My pictures</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#gallery">Favorite Places</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#contact">Talk to me</a>
-      </li>
-    </ul>
-  </div>
-  <!-- /Navigation -->
+  <!--sub header-->
+  <section class="row primary-sub-header">
+    <div class="col-md-6 col-xs-12">
+      <div class="text-center">
+        <a (click)="myVote('love',optionsClass.loveClass)">
+          <i class="fa {{optionsClass.loveClass}} fa-3x" aria-hidden="true"></i>
+        </a>
+
+        <a (click)="myVote('like',optionsClass.likeClass)">
+          <i class="fa {{optionsClass.likeClass}} fa-3x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="text-center">
+        <a href="#" id="share-fb" class="sharer button"><i class="fa fa-3x fa-facebook-square"></i></a>
+        <a href="#" id="share-tw" class="sharer button"><i class="fa fa-3x fa-twitter-square"></i></a>
+        <a href="#" id="share-li" class="sharer button"><i class="fa fa-3x fa-linkedin-square"></i></a>
+      </div>
+    </div>
+  </section>
 </section>
 
-<ngb-tabset>
+<ngb-tabset activeId="gallery-tab">
   <ngb-tab title="My little world">
     <ng-template ngbTabContent>
-
-      <h1>Initicio</h1>
-      <div class="row">
-        <section class="text-center wrapper-playimg">
-          <div class="col-md-12">
-            <img src="https://s-media-cache-ak0.pinimg.com/originals/6a/02/4e/6a024e8f71164d8b4729e134056c5613.jpg" alt="image demo">
-          </div>
-
-          <div class="col-md-4">
-            <div id="container" align="center">
-              <button class="big-button" data-action="submit">
-                push the button
-              </button>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="box">
-              <span></span>
-            </div>
-          </div>
-
-
-          <div class="col-md-4">
-            {{toggleAnimmation}}
-            <button class="button-mode-two" (click)="testeFunction()" [ngClass]="{'is-animating':toggleAnimmation}">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="text">Press Me!</span>
-            </button>
-          </div>
-
-
-
-          <!--   <div class="shadow"></div> -->
-
-          <div class="col-md-12">
+      <section class="my-little-world">
+        <div class="row">
+          <!-- Section: about -->
+          <section id="about" class="home-section">
             <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                  <div class="section-heading text-center">
+                    <div class="wow bounceInDown" data-wow-delay="0.2s">
+                      <h2>My name is Puppy</h2>
+                    </div>
+                    <p class="wow bounceInUp" data-wow-delay="0.3s">I'm 28 years old from a village near Alpen mountain and I'm a spinster :(</p>
+                  </div>
 
-              Fast, border-radius, vertical background
-              <div class="wrap">
-                <button class="clicker fast">press</button>
-                <div class="circle angled second"></div>
-              </div>
-
-              Faster, no border-radius, 45 deg background
-              <div class="wrap">
-                <button class="clicker faster">press</button>
-                <div class="circle angled third"></div>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4 primary-img">
+                  <div>
+                    <img src="https://4.bp.blogspot.com/-9nKE3vaxfu0/V0-qdhLE4VI/AAAAAAAABvg/o67WUw__PqAGNZUjzRjnjcx7o_uGBrzeQCLcB/s1600/enrichment-for-dogs.jpg"
+                      class="rounded float-left">
+                  </div>
+                  <div class="text-center">
+                    <button href="#gallery " class="btn btn-lg btn-primary ">See my photos</button>
+                  </div>
+                </div>
+                <div class="col-md-8 ">
+                  <p>
+                    <strong>You'll Love me so much</strong>
+                  </p>
+                  <p>See my rates :)</p>
 
 
-          <div class="col-md-12">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
-              <defs>
-                <filter id="goo">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                  <feBlend in="SourceGraphic" in2="goo" />
-                </filter>
-              </defs>
-            </svg>
-            <div class="demo">
-              <div class="demo__buttons" [ngClass]="{'step-3':open}">
-                <div class="demo__social-btn-1 demo__social-btn">
-                  <i class="fa fa-twitter"></i>
-                </div>
-                <div class="demo__social-btn-2 demo__social-btn">
-                  <i class="fa fa-facebook"></i>
-                </div>
-                <div class="demo__social-btn-3 demo__social-btn">
-                  <i class="fa fa-instagram"></i>
-                </div>
-                <div class="demo__social-btn-4 demo__social-btn">
-                  <i class="fa fa-snapchat"></i>
-                </div>
-                <div class="demo__open-btn" (click)="teste2()">
-                  <i class="fa fa-share-alt"></i>
+                  <!-- Section: separator -->
+                  <section id="separator" class="home-section parallax text-center" data-stellar-background-ratio="0.5">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="align-center txt-shadow">
+                          <div class="icon">
+                            <i class="fa fa-graduation-cap fa-5x"></i>
+                          </div>
+                          <span class="color-white">Bachelor of Design</span>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="align-center txt-shadow">
+                          <div class="icon">
+                            <i class="fa fa-heart fa-5x"></i>
+                          </div>
+                          <span class="color-white">Lovely 300 Likes</span>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="align-center txt-shadow">
+                          <div class="icon">
+                            <i class="fa fa-plane fa-5x"></i>
+                          </div>
+                          <span class="color-white">I love traveling</span>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="align-center txt-shadow">
+                          <div class="icon">
+                            <i class="fa fa-camera fa-5x"></i>
+                          </div>
+                          <span class="color-white">I'm photographer</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </section>
+                  <!-- /Section: separator -->
                 </div>
               </div>
-              <span class="about-me">Check out my other
-                <a target="_blank" href="https://codepen.io/kiyutink">pens</a> and follow me on
-                <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>
-              </span>
             </div>
-          </div>
+          </section>
+          <!-- /Section: about -->
+        </div>
+      </section>
 
-
-        </section>
-      </div>
 
 
 
@@ -140,27 +128,125 @@
         aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
     </ng-template>
   </ngb-tab>
-  <ngb-tab>
+  <ngb-tab id="gallery-tab">
     <ng-template ngbTabTitle>
       <b>My</b> Pictures</ng-template>
-    <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-      <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-        beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
-        PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
-        magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard
-        ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-        accusamus tattooed echo park.</p>
+    <ng-template ngbTabContent>
+
+      <!-- Section: gallery -->
+      <section id="gallery" class="home-section text-center bg-gray">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class="wow bounceInDown" data-wow-delay="0.4s">
+                <div class="section-heading">
+                  <h2>My photo gallery</h2>
+                  <p>Take a look at my personal moment, enjoy</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container gallery-container">
+
+          <h1>Bootstrap 3 Gallery</h1>
+
+          <p class="page-description text-center">Grid Layout With Zoom Effect</p>
+
+          <div class="tz-gallery">
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+                <button>Acao 1</button>
+                <button>Acao 2</button>
+                <button>Acao 3</button>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+                <div>
+                  <button>Acao 1</button>
+                  <button>Acao 2</button>
+                  <button>Acao 3</button>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
+            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
+          </a>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
     </ng-template>
   </ngb-tab>
   <ngb-tab>
     <ng-template ngbTabTitle>Play with me</ng-template>
-    <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-      <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-        beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
-        PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
-        magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard
-        ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-        accusamus tattooed echo park.</p>
+    <ng-template ngbTabContent>
+      <div class="play-with-me">
+        <h2>Below threre is my favourite picture. Try play with a little clicking how times you can</h2>
+
+        <div class="my-favourite-picture">
+          <div class="row button-click">
+            <div class="col-md-12">
+              <div class="wrap">
+                <button class="clicker fast" (click)="increaseQtdClick()" [ngClass]="levelUpClicker">
+                  <span *ngIf="qtdClick == 0">press</span>
+                  <span *ngIf="qtdClick > 0">{{qtdClick}}</span>
+                  </button>
+                <div class="circle angled second"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-center" style="padding-top:10px">
+              <button class="btn btn-xs btn-danger" (click)="resetClick()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </ng-template>
   </ngb-tab>
   <ngb-tab>
@@ -174,6 +260,26 @@
         accusamus tattooed echo park.</p>
     </ng-template>
   </ngb-tab>
+  <ngb-tab title="My Videos">
+    <ng-template ngbTabContent>
+      <section id="my-videos" style="margin-top:30px">
+        <div class="row">
+          <div class="col-md-3 video-embed">
+            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
+          </div>
+          <div class="col-md-3 video-embed">
+            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
+          </div>
+          <div class="col-md-3 video-embed">
+            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
+          </div>
+          <div class="col-md-3 video-embed">
+            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
+          </div>
+        </div>
+      </section>
+    </ng-template>
+  </ngb-tab>
   <ngb-tab title="Favourite Places" [disabled]="true">
     <ng-template ngbTabContent>
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
@@ -184,172 +290,7 @@
   </ngb-tab>
 </ngb-tabset>
 
-<!-- Section: about -->
-<section id="about" class="home-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <div class="section-heading text-center">
-          <div class="wow bounceInDown" data-wow-delay="0.2s">
-            <h2>My name is Puppy</h2>
-          </div>
-          <p class="wow bounceInUp" data-wow-delay="0.3s">I'm 28 years old from a village near Alpen mountain and I'm a spinster :(</p>
-        </div>
 
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 primary-img">
-        <div>
-          <img src="https://4.bp.blogspot.com/-9nKE3vaxfu0/V0-qdhLE4VI/AAAAAAAABvg/o67WUw__PqAGNZUjzRjnjcx7o_uGBrzeQCLcB/s1600/enrichment-for-dogs.jpg"
-            class="rounded float-left">
-        </div>
-        <div class="text-center">
-          <button href="#gallery " class="btn btn-lg btn-primary ">See my photos</button>
-        </div>
-      </div>
-      <div class="col-md-8 ">
-        <p>
-          <strong>You'll Love me so much</strong>
-        </p>
-        <p>See my rates :)</p>
-
-
-        <!-- Section: separator -->
-        <section id="separator" class="home-section parallax text-center" data-stellar-background-ratio="0.5">
-          <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3">
-              <div class="align-center txt-shadow">
-                <div class="icon">
-                  <i class="fa fa-graduation-cap fa-5x"></i>
-                </div>
-                <span class="color-white">Bachelor of Design</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-              <div class="align-center txt-shadow">
-                <div class="icon">
-                  <i class="fa fa-heart fa-5x"></i>
-                </div>
-                <span class="color-white">Lovely 300 Likes</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-              <div class="align-center txt-shadow">
-                <div class="icon">
-                  <i class="fa fa-plane fa-5x"></i>
-                </div>
-                <span class="color-white">I love traveling</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-3">
-              <div class="align-center txt-shadow">
-                <div class="icon">
-                  <i class="fa fa-camera fa-5x"></i>
-                </div>
-                <span class="color-white">I'm photographer</span>
-              </div>
-            </div>
-          </div>
-
-        </section>
-        <!-- /Section: separator -->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /Section: about -->
-
-
-
-<!-- Section: gallery -->
-<section id="gallery" class="home-section text-center bg-gray">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <div class="wow bounceInDown" data-wow-delay="0.4s">
-          <div class="section-heading">
-            <h2>My photo gallery</h2>
-            <p>Take a look at my personal moment, enjoy</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container gallery-container">
-
-    <h1>Bootstrap 3 Gallery</h1>
-
-    <p class="page-description text-center">Grid Layout With Zoom Effect</p>
-
-    <div class="tz-gallery">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-          <button>Acao 1</button>
-          <button>Acao 2</button>
-          <button>Acao 3</button>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-          <div>
-            <button>Acao 1</button>
-            <button>Acao 2</button>
-            <button>Acao 3</button>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a class="lightbox" href="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg">
-            <img src="https://i.pinimg.com/736x/c2/7a/96/c27a96813b1572c6c2849f7ec43028db--learn-photography-photography-poses.jpg" alt="Park">
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
 
 
 

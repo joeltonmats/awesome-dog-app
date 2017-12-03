@@ -24,6 +24,8 @@ import { CountryService } from "./services/country.service";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YoutubePlayerModule,
+    ToastModule.forRoot()
   ],
   providers: [ChatService, ConnectionService, CountryService, DogService],
   bootstrap: [AppComponent]
