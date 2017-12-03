@@ -1,8 +1,9 @@
-<h1>
-    {{ title + ' ' + country.countryName}}</h1>
+<section id="country-cities">
 
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="marker.city.lat" [longitude]="marker.city.lng" [title]="marker.title" *ngFor="let marker of citiesMarker "></agm-marker>
-</agm-map>
+    <h1> {{ title + ' ' + country.countryName}}</h1>
+    <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="marker.city.lat" [longitude]="marker.city.lng" [title]="marker.title" *ngFor="let marker of citiesMarker "></agm-marker>
+    </agm-map>
 
-<app-users [city]="citySelected"></app-users>
+    <app-users [city]="citySelected"></app-users>
+</section>

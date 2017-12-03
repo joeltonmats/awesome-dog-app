@@ -18,7 +18,7 @@ export class ChatService {
   }
 
   constructor() {
-    if (!sessionStorage.getItem('nome')) {
+ /*   if (!sessionStorage.getItem('nome')) {
       this.usuario = prompt('qual seu nome ?');
     } else {
       this.usuario = sessionStorage.getItem('nome');
@@ -28,7 +28,7 @@ export class ChatService {
     this.logTime = new Date();
     sessionStorage.setItem('nome', this.usuario);
 
-    this.server = io(this.serverUrl);
+    this.server = io(this.serverUrl);*/
   }
 
 }

@@ -27,6 +27,43 @@ export class City {
   ) { }
 }
 
+//Dog Classes
+
+export class Dog {
+  constructor(
+    public name: string,
+    public pictures: Array<DocPicture>,
+    public profile_picture: DocPicture,
+    public favourite_places: Array<DogFavouritePlace>,
+    public rating: DogRating
+  ) { }
+}
+
+export class DocPicture {
+  constructor(
+    public label: string,
+    public url: string
+  ) { }
+}
+
+export class DogFavouritePlace {
+  constructor(
+    public name: string,
+    public description: string,
+    public lat: string,
+    public lng: string
+  ) { }
+}
+
+export class DogRating {
+  constructor(
+    public qtdLike: number,
+    public qtdLove: number
+  ) { }
+}
+
+//End Dog Classes
+
 export class CityMarker {
   constructor(
     public city: City,

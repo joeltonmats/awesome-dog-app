@@ -8,7 +8,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class CountryCitiesComponent implements OnInit, OnChanges {
 
-  title: string = 'Cities in ';
+  title: string = 'Cuty dogs in ';
   lat: number = 51.678418;
   lng: number = 7.809007;
   @Input() country: Country;

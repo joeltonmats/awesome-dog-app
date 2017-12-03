@@ -1,60 +1,51 @@
-<div class="row">
-  <div class="col-md-2">
-    <div class="view">
-      <div class="caption">
-        <p>47LabsDesign</p>
-        <a href="" rel="tooltip" title="Appreciate"><span class="fa fa-heart-o fa-2x"></span></a>
-        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
+<!-- Dog list -->
+<section id="dog-list" class="home-section bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let dog of dogs">
+        <div class="card">
+          <div class="hovereffect">
+            <img class="card-img-top" [src]="dog.profile_picture.url" alt="dog.label" (mouseenter)="toggleCaptionAnimate($event)">
+            <div class="overlay">
+              <h2>{{dog.name}}</h2>
+              <a class="info" href="#">details</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- <p class="text-center">
+              {{dog.name}}
+            </p>-->
+            <div class="stats turqbg">
+              <span class="fa fa-heart-o"> <strong>{{dog.rating.qtdLove}}</strong></span>
+              <span class="fa fa-thumbs-o-up"> <strong>{{dog.rating.qtdLike}}</strong></span>
+              <span class="fa fa-eye pull-right"> <strong>137</strong></span>
+            </div>
+
+            <!--   <div class="card-caption" [@captionAnimate]="captionStateName">
+              <div class="blur"></div>
+              <div class="caption-text">
+                <p>Whatever It Is - Always Awesome</p>
+              </div>
+            </div>-->
+          </div>
+        </div>
       </div>
-      <img src="https://www.petinsurance.com/images/dog-bone.png" class="img-responsive" (click)="viewDetails()">
     </div>
-    <div class="info">
-      <p class="small" style="text-overflow: ellipsis">An Awesome Title</p>
-      <p class="small coral text-right"><i class="fa fa-clock-o"></i> <small> Today | 10:42 A.M.</small>
-      </p>
-    </div>
-    <div class="stats turqbg">
-      <span class="fa fa-heart-o"> <strong>47</strong></span>
-      <span class="fa fa-eye pull-right"> <strong>137</strong></span>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="!isResultComplete">
+          <div class="text-center" style="padding-top:30px;" *ngIf="!isLoading">
+            <button class="btn btn-lg btn-load" (click)="loadMoreDogs()">Load more...</button>
+          </div>
+          <div class="text-center" *ngIf="isLoading">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="text-center" *ngIf="isResultComplete">
+          all pretty dogs users loaded
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-md-2">
-    <div class="view">
-      <div class="caption">
-        <p>47LabsDesign</p>
-        <a href="" rel="tooltip" title="Appreciate"><span class="fa fa-heart-o fa-2x"></span></a>
-        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
-      </div>
-      <img src="http://www.akc.org/img/dnt/male-puppy.png" class="img-responsive">
-    </div>
-    <div class="info">
-      <p class="small" style="text-overflow: ellipsis">An Awesome Title</p>
-      <p class="small coral text-right"><i class="fa fa-clock-o"></i> <small> Today | 10:42 A.M.</small>
-      </p>
-    </div>
-    <div class="stats turqbg">
-      <span class="fa fa-heart-o"> <strong>47</strong></span>
-      <span class="fa fa-eye pull-right"> <strong>137</strong></span>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="view">
-      <div class="caption">
-        <p>47LabsDesign</p>
-        <a href="" rel="tooltip" title="Appreciate"><span class="fa fa-heart-o fa-2x"></span></a>
-        <a href="" rel="tooltip" title="View"><span class="fa fa-search fa-2x"></span></a>
-      </div>
-      <img src="http://fentonvets.co.uk/wp-content/uploads/2016/03/blog3.jpg" class="img-responsive">
-    </div>
-    <div class="info">
-      <p class="small" style="text-overflow: ellipsis">An Awesome Title</p>
-      <p class="small coral text-right"><i class="fa fa-clock-o"></i> <small> Today | 10:42 A.M.</small>
-      </p>
-    </div>
-    <div class="stats turqbg">
-      <span class="fa fa-heart-o"> <strong>47</strong></span>
-      <span class="fa fa-thumbs-o-up"> <strong>47</strong></span>
-      <span class="fa fa-eye pull-right"> <strong>137</strong></span>
-    </div>
-  </div>
-</div>
+</section>

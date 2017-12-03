@@ -1,3 +1,4 @@
+import { DogService } from './services/dog.services';
 import { ChatService } from './chat/chat.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ModuleWithProviders, NgModule } from '@angular/core';
@@ -20,7 +21,9 @@ import { AgmCoreModule } from '@agm/core';
 import { UsersComponent } from './dog-location/users/users.component';
 import { UserDetailComponent } from './dog-location/user-detail/user-detail.component';
 import { CountryService } from "./services/country.service";
-
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { CountryService } from "./services/country.service";
     CountriesComponent,
     CountryCitiesComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +48,10 @@ import { CountryService } from "./services/country.service";
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    BrowserAnimationsModule
   ],
-  providers: [ChatService, ConnectionService, CountryService],
+  providers: [ChatService, ConnectionService, CountryService, DogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
