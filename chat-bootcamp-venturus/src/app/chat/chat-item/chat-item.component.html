@@ -1,6 +1,15 @@
-<li class="list-group-item" [ngClass]="{'my-message': minhaMensagem()}">
+<!-- <li class="list-group-item" [ngClass]="{'my-message': minhaMensagem()}">
   <p>{{message["author"]}}</p>
   <p>{{message["time"] | date:'dd/MM/yyyy hh:mm a'}}</p>
   <p>{{message["message"]}}</p>
   <p></p>
+</li> -->
+
+<li class="conversation__msg cf">
+  <span class="right" *ngIf="minhaMensagem()">{{message["message"]}}</span>
+  <span *ngIf="!minhaMensagem()">{{message["message"]}}</span>
+  <!-- <p>{{message["author"]}}</p>
+    <p>{{message["time"] | date:'dd/MM/yyyy hh:mm a'}}</p>
+    <p>{{message["message"]}}</p>
+    <p></p> -->
 </li>

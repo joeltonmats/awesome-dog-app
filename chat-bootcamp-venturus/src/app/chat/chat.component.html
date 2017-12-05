@@ -1,7 +1,44 @@
-<ul class="messageList list-group" #scrollMe>
-  <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens"></app-chat-item>
-</ul>
-<textarea [(ngModel)]="mensagemInserir" cols="30" rows="10"></textarea>
-<div class="text-right">
-  <button class="btn btn-primary" (click)="enviaMensagem()">Salvar</button>
+<section class="row">
+  <section class="col-md-12">
+    <ul class="messageList list-group" #scrollMe>
+      <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens"></app-chat-item>
+    </ul>
+    <textarea [(ngModel)]="mensagemInserir" cols="30" rows="10"></textarea>
+    <div class="text-right">
+      <button class="btn btn-primary" (click)="enviaMensagem()">Salvar</button>
+    </div>
+  </section>
+</section>
+
+
+
+
+<section class="row">
+  <div class="col-md-12">
+    <agm-map [latitude]="51.678418" [longitude]="7.809007" [styles]="mapStyle">
+      <agm-marker [latitude]="55.752" [longitude]="37.616" [title]="'Moscow'">
+        <agm-info-window>
+          <img src="https://i.imgur.com/4VNr74gt.jpg" alt="">
+        </agm-info-window>
+      </agm-marker>
+      <agm-marker [latitude]="59.939" [longitude]="30.314" [title]="'St Petersburg'"></agm-marker>
+    </agm-map>
+  </div>
+</section>
+
+
+
+<button type="button" class="button js-trigger" (click)="openDialog = true" *ngIf="!openDialog">Chat (45)</button>
+
+<div *ngIf="openDialog" class="conversation">
+  <div class="conversation__header" (click)="openDialog = false">
+    Denzel Washington
+    <span class="close-msg">&times;</span>
+  </div>
+  <ul class="conversation__wrap" #scrollMe>
+    <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens"></app-chat-item>
+  </ul>
+
+  <input class="input" type="text" placeholder="Enter Message" (ngModel)="mensagemInserir" (keyup.enter)="enviaMensagem($event)"
+  />
 </div>

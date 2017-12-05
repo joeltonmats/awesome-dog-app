@@ -13,8 +13,8 @@ export class Country2 {
 export class Country {
 
   constructor(
-    public countryName: string,
-    public countryCode: string
+    public name: string,
+    public code: string
   ) { }
 
 }
@@ -22,8 +22,8 @@ export class Country {
 export class City {
   constructor(
     public name: string,
-    public lng: string,
-    public lat: string
+    public lat: number,
+    public lng: number
   ) { }
 }
 

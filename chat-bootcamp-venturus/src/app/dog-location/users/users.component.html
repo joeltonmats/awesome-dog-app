@@ -5,28 +5,24 @@
       <div class="col-md-3" *ngFor="let dog of dogs">
         <div class="card">
           <div class="hovereffect">
-            <img class="card-img-top" [src]="dog.profile_picture.url" alt="dog.label" (mouseenter)="toggleCaptionAnimate($event)">
+            <img class="card-img-top" [src]="dog.pictureObject.profile_picture_thumb.url" alt="dog.pictureObject.profile_picture_thumb.label">
             <div class="overlay">
               <h2>{{dog.name}}</h2>
-              <a class="info" href="#">details</a>
+              <a class="info" (click)="userDetail(dog)">details</a>
             </div>
           </div>
           <div class="card-body">
-            <!-- <p class="text-center">
-              {{dog.name}}
-            </p>-->
             <div class="stats turqbg">
-              <span class="fa fa-heart-o"> <strong>{{dog.rating.qtdLove}}</strong></span>
-              <span class="fa fa-thumbs-o-up"> <strong>{{dog.rating.qtdLike}}</strong></span>
-              <span class="fa fa-eye pull-right"> <strong>137</strong></span>
+              <span class="fa fa-heart-o">
+                <strong>{{dog.rating.qtdLove}}</strong>
+              </span>
+              <span class="fa fa-thumbs-o-up">
+                <strong>{{dog.rating.qtdLike}}</strong>
+              </span>
+              <span class="fa fa-eye pull-right">
+                <strong>137</strong>
+              </span>
             </div>
-
-            <!--   <div class="card-caption" [@captionAnimate]="captionStateName">
-              <div class="blur"></div>
-              <div class="caption-text">
-                <p>Whatever It Is - Always Awesome</p>
-              </div>
-            </div>-->
           </div>
         </div>
       </div>

@@ -1,21 +1,24 @@
-import { City } from '../../services/model.service';
-import { Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
+import { City, Dog } from '../../services/model.service';
+import { Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewContainerRef, ViewChild, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import '../../../../node_modules/baguettebox.js/dist/baguetteBox.min.js';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { DogService } from '../../services/dog.services';
+import { ChatService } from '../../chat/chat.service';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewInit {
 
   public idUser: number;
   public optionsClass: any;
   public qtdClick: number = 0;
   public levelUpClicker: any;
 
+  public dogSelected: Dog;
 
   public toggleAnimmation: boolean;
 
@@ -24,12 +27,30 @@ export class UserDetailComponent implements OnInit {
   public open: boolean;
   public curStep: number;
 
+  public mensagens: Object[] = [];
+  public mensagemInserir: string;
+
+  public messageResponses: Array<string> = [
+    'Why did the web developer leave the restaurant? Because of the table layout.',
+    'How do you comfort a JavaScript bug? You console it.',
+    'An SQL query enters a bar, approaches two tables and asks: "May I join you?"',
+    'What is the most used language in programming? Profanity.',
+    'What is the object-oriented way to become wealthy? Inheritance.',
+    'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
+  ];
+
+  @ViewChild('scrollMe') private scrollContainer: ElementRef;
 
 
-  constructor(private activatedRoute: ActivatedRoute,
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private renderer: Renderer2,
+    private router: Router,
     private elementRef: ElementRef,
-    public toastr: ToastsManager, vcr: ViewContainerRef) {
+    public toastr: ToastsManager, vcr: ViewContainerRef,
+    private dogService: DogService,
+    private _chatService: ChatService) {
 
     this.toastr.setRootViewContainerRef(vcr);
 
@@ -41,39 +62,22 @@ export class UserDetailComponent implements OnInit {
 
     this.toggleAnimmation = false;
 
-    this.delay = 150;
-    this.open = false;
-    this.curStep = 0;
-    this.steps = [];
 
-    for (let i = 0; i <= 3; i++) {
-      this.steps[i] = 'demo__step-' + i;
-    }
+    this._chatService.server.on('messages', m => this.mensagens.push(m));
+    //this.mapStyle = this.getMapStyle();
+
+
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.idUser = params['id'];
+
+    this.dogService.getDogAll(1, 100).subscribe(res => {
+      this.activatedRoute.params.subscribe((params: Params) => {
+        this.dogSelected = this.dogService.getDogByName(params['id'], res['array']);
+        console.log('selecionado', this.dogSelected);
+
+      });
     });
-  }
-
-  public animate() {
-    if (this.curStep >= 4) {
-      this.curStep = 0;
-      return;
-    }
-
-    this.open = true;
-    this.setStep(this.curStep);
-    this.curStep++;
-    setTimeout(this.animate, this.delay);
-  }
-
-  public setStep(index) {
-    console.log(this.renderer)
-    this.renderer.removeClass('.demo__buttons', 'step-1 step-0 step-3 step-2');
-    this.renderer.addClass('.demo__buttons', 'step-' + this.curStep);
-
   }
 
   public testeFunction() {
@@ -150,6 +154,37 @@ export class UserDetailComponent implements OnInit {
     if (message.length > 0) {
       this.toastr.success(`<span style="${color}">${message}</span> .`, null, { enableHTML: true });
     }
+  }
+
+  ngAfterViewChecked() {
+    // this.scrollToBottom();
+  }
+
+  ngAfterViewInit() {
+    this.scrollToBottom();
+  }
+
+  private scrollToBottom(): void {
+    this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+  }
+
+  public enviaMensagem(event: any) {
+
+    console.log("entrou", event.target.value);
+
+    const obj = { message: event.target.value, author: this._chatService.nomeUsuario };
+    this._chatService.server.emit('messages', obj);
+
+    const objRes = { message: this.getRandomItem(this.messageResponses), author: 'Unknowkn' };
+    this._chatService.server.emit('messages', objRes);
+
+    this.mensagemInserir = '';
+    event.target.value = null;
+  }
+
+  private getRandomItem(arr) {
+    console.log("arrrrrrrrrr", arr);
+    return arr[Math.floor(Math.random() * arr.length)];
   }
 
 

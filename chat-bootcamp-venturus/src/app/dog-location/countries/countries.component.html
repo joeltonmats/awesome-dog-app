@@ -1,9 +1,9 @@
 <section id="countries">
   <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-lg btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle *ngIf="countryList.length > 0">{{countrySelected.countryName}}</button>
+    <button class="btn btn-lg btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle *ngIf="countryList.length > 0">{{countrySelected.name}}</button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button class="dropdown-item" *ngFor="let country of countryList" (click)="choiceCountry(country)">
-          {{country.countryName + ' ('+country.countryCode+')'}}</button>
+        {{country.name + ' ('+country.code+')'}}</button>
     </div>
   </div>
   <app-country-cities [country]="countrySelected" [cities]="citiesFromCountry"></app-country-cities>

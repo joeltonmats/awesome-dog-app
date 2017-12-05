@@ -56,28 +56,10 @@ export class UsersComponent implements OnInit, OnChanges {
     //throw new Error("Method not implemented.");
   }
 
-  public userDetail(id) {
-    this.router.navigate(['/user-detail/' + id])
+  public userDetail(dog: Dog) {
+    this.router.navigate(['/user-detail/' + dog.name, { dogSelected: dog }]);
   }
 
-
-  public viewDetails() {
-    this.router.navigate(['/user-detail/2'])
-  }
-
-  public toggleCaptionAnimate($event) {
-
-
-
-    if (this.captionStateName == 'active') {
-      this.captionStateName = 'inactive';
-    } else {
-      this.captionStateName = 'active';
-    }
-
-    console.log(this.captionStateName);
-
-  }
 
   public loadMoreDogs() {
     this.pageNumber++;
@@ -89,10 +71,9 @@ export class UsersComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this._dogService.getDogAll(pageNumber, qtdByPage)
       .subscribe(res => {
-        if (res.length !== 0) {
-          this.dogs = this.dogs ? this.dogs.concat(res) : res;
+        if (res['array'].length !== 0) {
+          this.dogs = this.dogs ? this.dogs.concat(res['array']) : res['array'];
           console.log("dsdsdsddddddddddddddd", res);
-
         } else {
           this.isResultComplete = true;
         }

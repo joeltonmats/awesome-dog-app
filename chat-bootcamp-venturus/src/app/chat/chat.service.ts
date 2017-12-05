@@ -6,7 +6,7 @@ export class ChatService {
 
   private usuario = 'Notleoj';
   private logTime: Date;
-  private serverUrl = 'http://172.24.30.24:3000'; //'http://bootcamp.us-east-1.elasticbeanstalk.com/';
+  private serverUrl = 'localhost:3000'; //'http://bootcamp.us-east-1.elasticbeanstalk.com/';
   public server: any;
 
   get nomeUsuario(): string {
@@ -18,7 +18,7 @@ export class ChatService {
   }
 
   constructor() {
- /*   if (!sessionStorage.getItem('nome')) {
+    if (!sessionStorage.getItem('nome')) {
       this.usuario = prompt('qual seu nome ?');
     } else {
       this.usuario = sessionStorage.getItem('nome');
@@ -28,7 +28,7 @@ export class ChatService {
     this.logTime = new Date();
     sessionStorage.setItem('nome', this.usuario);
 
-    this.server = io(this.serverUrl);*/
+    this.server = io(this.serverUrl);
   }
 
 }

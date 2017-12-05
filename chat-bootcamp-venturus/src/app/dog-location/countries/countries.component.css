@@ -8,6 +8,7 @@
     overflow-y: scroll;
     max-height: 150px;
     border: 3px solid #0099CC;
+    min-width: 300px;
 }
 
 .dropdown-item:focus,
