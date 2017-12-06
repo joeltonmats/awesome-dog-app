@@ -49,11 +49,12 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     HttpClientModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyAx9FVTqx9XB_EBAv2vCjOIQ3jQOu6aMM4'
     }),
     BrowserAnimationsModule,
     YoutubePlayerModule,
     ToastModule.forRoot()
+
   ],
   providers: [ChatService, ConnectionService, CountryService, DogService],
   bootstrap: [AppComponent]
