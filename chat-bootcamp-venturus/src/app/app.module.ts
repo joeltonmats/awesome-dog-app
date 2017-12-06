@@ -49,7 +49,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     HttpClientModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAx9FVTqx9XB_EBAv2vCjOIQ3jQOu6aMM4'
+      apiKey: ''
     }),
     BrowserAnimationsModule,
     YoutubePlayerModule,
