@@ -38,6 +38,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/jquery": "^3.2.16",
     "@types/node": "~6.0.60",
+    "@types/socket.io-client": "^1.4.32",
     "@types/youtube": "0.0.29",
     "baguettebox.js": "^1.9.1",
     "bootstrap": "^4.0.0-beta.2",

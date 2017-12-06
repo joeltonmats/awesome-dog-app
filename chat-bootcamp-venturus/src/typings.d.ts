@@ -8,7 +8,3 @@ interface NodeModule {
 interface JQuery {
   hoverdir(options?: any): any;
 }
-
-declare module 'socket.io-client' {
-  var e: any;
-}
