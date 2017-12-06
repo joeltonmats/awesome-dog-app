@@ -12,6 +12,11 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod"
   },
+  "keywords": [
+    "dog-app",
+    "awesome-dog"
+  ],
+  "author": "Joelton Matos",
   "engines": {
     "node": "~6.11.0",
     "npm": "~3.10.10"
