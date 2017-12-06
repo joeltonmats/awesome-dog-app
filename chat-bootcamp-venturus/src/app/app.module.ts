@@ -20,7 +20,7 @@ import { CountryCitiesComponent } from './dog-location/country-cities/country-ci
 import { AgmCoreModule } from '@agm/core';
 import { UsersComponent } from './dog-location/users/users.component';
 import { UserDetailComponent } from './dog-location/user-detail/user-detail.component';
-import { CountryService } from "./services/country.service";
+import { CountryService } from './services/country.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

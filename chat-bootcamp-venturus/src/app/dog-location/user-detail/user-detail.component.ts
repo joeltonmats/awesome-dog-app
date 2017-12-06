@@ -1,5 +1,8 @@
 import { City, Dog } from '../../services/model.service';
-import { Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewContainerRef, ViewChild, AfterViewChecked, AfterViewInit } from '@angular/core';
+import {
+  Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewContainerRef,
+  ViewChild, AfterViewChecked, AfterViewInit
+} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import '../../../../node_modules/baguettebox.js/dist/baguetteBox.min.js';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
@@ -15,7 +18,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
   public idUser: number;
   public optionsClass: any;
-  public qtdClick: number = 0;
+  public qtdClick: number;
   public levelUpClicker: any;
 
   public dogSelected: Dog;
@@ -55,8 +58,8 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
     this.toastr.setRootViewContainerRef(vcr);
 
     this.optionsClass = {};
-    this.optionsClass.likeClass = "fa-thumbs-o-up";
-    this.optionsClass.loveClass = "fa-heart-o";
+    this.optionsClass.likeClass = 'fa-thumbs-o-up';
+    this.optionsClass.loveClass = 'fa-heart-o';
 
     this.levelUpClicker = {};
 
@@ -64,7 +67,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
 
     this._chatService.server.on('messages', m => this.mensagens.push(m));
-    //this.mapStyle = this.getMapStyle();
+    // this.mapStyle = this.getMapStyle();
 
 
   }
@@ -88,21 +91,21 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
   public myVote(type, optionClassSelected) {
 
-    if (type == 'love') {
-      if (optionClassSelected === 'fa-heart')
-        this.optionsClass.loveClass = "fa-heart-o";
-      else
-        this.optionsClass.loveClass = "fa-heart";
+    if (type === 'love') {
+      if (optionClassSelected === 'fa-heart') {
+        this.optionsClass.loveClass = 'fa-heart-o';
+      } else {
+        this.optionsClass.loveClass = 'fa-heart';
+      }
     }
 
-    if (type == 'like') {
-      if (optionClassSelected === 'fa-thumbs-up')
-        this.optionsClass.likeClass = "fa-thumbs-o-up";
-      else
-        this.optionsClass.likeClass = "fa-thumbs-up";
+    if (type === 'like') {
+      if (optionClassSelected === 'fa-thumbs-up') {
+        this.optionsClass.likeClass = 'fa-thumbs-o-up';
+      } else {
+        this.optionsClass.likeClass = 'fa-thumbs-up';
+      }
     }
-
-
   }
 
   public increaseQtdClick() {
@@ -131,19 +134,19 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
     let message = '';
     let color = '';
 
-    if (this.qtdClick == 11) {
+    if (this.qtdClick === 11) {
       message = 'Average';
       color = 'background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);';
-    } else if (this.qtdClick == 51) {
+    } else if (this.qtdClick === 51) {
       message = 'Professional';
       color = 'background: linear-gradient(to right, #3a7bd5, #00d2ff);';
-    } else if (this.qtdClick == 81) {
+    } else if (this.qtdClick === 81) {
       message = 'Lord';
       color = '  background: linear-gradient(to right, #AA3A38, #2F7336);';
-    } else if (this.qtdClick == 151) {
+    } else if (this.qtdClick === 151) {
       message = 'King';
       color = 'background: linear-gradient(to right, #f80759, #bc4e9c);';
-    } else if (this.qtdClick == 251) {
+    } else if (this.qtdClick === 251) {
       message = 'Legend';
       color = 'background: linear-gradient(to right, #F0CB35, #C02425);';
     } else if (this.qtdClick > 400) {
@@ -170,7 +173,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
   public enviaMensagem(event: any) {
 
-    console.log("entrou", event.target.value);
+    console.log('entrou', event.target.value);
 
     const obj = { message: event.target.value, author: this._chatService.nomeUsuario };
     this._chatService.server.emit('messages', obj);
@@ -183,7 +186,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   }
 
   private getRandomItem(arr) {
-    console.log("arrrrrrrrrr", arr);
+    console.log('arrrrrrrrrr', arr);
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
