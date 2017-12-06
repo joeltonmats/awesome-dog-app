@@ -27,7 +27,7 @@ export class ChatService {
     this.logTime = new Date();
     sessionStorage.setItem('nome', this.usuario);
 
-    this.server = io(this.serverUrl);
+    // this.server = io(this.serverUrl);
   }
 
 }
