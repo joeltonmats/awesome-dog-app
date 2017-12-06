@@ -54,7 +54,6 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     BrowserAnimationsModule,
     YoutubePlayerModule,
     ToastModule.forRoot()
-
   ],
   providers: [ChatService, ConnectionService, CountryService, DogService],
   bootstrap: [AppComponent]
