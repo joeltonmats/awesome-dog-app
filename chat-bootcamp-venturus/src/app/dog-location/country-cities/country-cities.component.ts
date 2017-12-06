@@ -26,18 +26,17 @@ export class CountryCitiesComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.createMarks();
+    this.createMarks();
   }
 
   private createMarks() {
-    console.log(this.cities);
     if (this.cities && this.cities.length > 0) {
+      this.citiesMarker = [];
       for (const city of this.cities) {
         const cityMarker = new CityMarker(city, 'map', city.name);
         this.citiesMarker.push(cityMarker);
       }
     }
-
-    console.log(this.citiesMarker);
   }
 
 }

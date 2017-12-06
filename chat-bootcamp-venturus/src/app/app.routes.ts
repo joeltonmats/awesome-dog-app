@@ -8,7 +8,7 @@ import { UserDetailComponent } from './dog-location/user-detail/user-detail.comp
 const appRoutes: Routes = [
     { path: '', component: DogLocationComponent },
     { path: 'dog-location', component: DogLocationComponent },
-    { path: 'user-detail/:id', component: UserDetailComponent, data: { dogSelected: '' } },
+    { path: 'user-detail/:id', component: UserDetailComponent },
     { path: 'chat', component: ChatComponent },
     { path: 'sobre', component: SobreComponent },
     { path: '**', component: ChatComponent }

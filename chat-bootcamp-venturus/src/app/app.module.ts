@@ -27,6 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
+import 'hammerjs';
+import { NgxGalleryModule } from 'ngx-gallery';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     }),
     BrowserAnimationsModule,
     YoutubePlayerModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [ChatService, ConnectionService, CountryService, DogService],
   bootstrap: [AppComponent]

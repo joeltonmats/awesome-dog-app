@@ -32,17 +32,17 @@ export class City {
 export class Dog {
   constructor(
     public name: string,
-    public pictures: Array<DocPicture>,
-    public profile_picture: DocPicture,
+    public pictures: Array<DogPicture>,
+    public profile_picture: DogPicture,
     public favourite_places: Array<DogFavouritePlace>,
     public rating: DogRating
   ) { }
 }
 
-export class DocPicture {
+export class DogPicture {
   constructor(
-    public label: string,
-    public url: string
+    public src: string,
+    public caption: string
   ) { }
 }
 

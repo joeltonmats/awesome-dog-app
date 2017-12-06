@@ -6,29 +6,23 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DogService {
 
-    private serverUrl = "http://demo4213404.mockable.io/";
+    private serverUrl = 'https://awesome-dog-api.herokuapp.com';
 
     constructor(
         private http: HttpClient,
     ) { }
 
     getDogAll(page: Number, qdtByPage): Observable<Dog[]> {
-        // const urlGetDogAll = `${this.serverUrl}/array?_page=${page}&_limit=${qdtByPage}`;
-        const urlGetDogAll = `${this.serverUrl}/dogs`;
+        const urlGetDogAll = `${this.serverUrl}/dogs?_page=${page}&_limit=${qdtByPage}`;
 
         return this.http.get<Dog[]>(urlGetDogAll);
 
     }
 
 
-    getDogByName(name: string, dogs: Array<Dog>): Dog {
-        let dogMatch = null;
-        dogs.forEach(item => {
-            if (item.name.trim() === name.trim()) {
-                dogMatch = item;
-            }
-        });
+    getDogByName(name: string): Observable<Dog> {
+        const urlGetDogByName = `${this.serverUrl}/dogs?name=${name}`;
 
-        return dogMatch;
+        return this.http.get<Dog>(urlGetDogByName);
     }
 }

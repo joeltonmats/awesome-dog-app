@@ -1,13 +1,15 @@
-import { City, Dog } from '../../services/model.service';
 import {
   Component, ElementRef, Input, OnChanges, OnInit, Renderer2, ViewContainerRef,
   ViewChild, AfterViewChecked, AfterViewInit
 } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import '../../../../node_modules/baguettebox.js/dist/baguetteBox.min.js';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { DogService } from '../../services/dog.services';
 import { ChatService } from '../../chat/chat.service';
+import { City, Dog, DogPicture } from '../../services/model.service';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
   selector: 'app-user-detail',
@@ -22,12 +24,12 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   public levelUpClicker: any;
 
   public dogSelected: Dog;
+  public dogImages: Array<NgxGalleryImage>;
 
   public toggleAnimmation: boolean;
 
   public delay: number;
   public steps: string[];
-  public open: boolean;
   public curStep: number;
 
   public mensagens: Object[] = [];
@@ -42,9 +44,10 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
     'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
   ];
 
+  public galleryOptions: NgxGalleryOptions[];
+  public galleryImages: NgxGalleryImage[];
+
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
-
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,7 +56,8 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
     private elementRef: ElementRef,
     public toastr: ToastsManager, vcr: ViewContainerRef,
     private dogService: DogService,
-    private _chatService: ChatService) {
+    private _chatService: ChatService,
+    private _location: Location) {
 
     this.toastr.setRootViewContainerRef(vcr);
 
@@ -65,8 +69,12 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
     this.toggleAnimmation = false;
 
+    this.qtdClick = 0;
 
-    this._chatService.server.on('messages', m => this.mensagens.push(m));
+
+
+
+    /*  this._chatService.server.on('messages', m => this.mensagens.push(m)); */
     // this.mapStyle = this.getMapStyle();
 
 
@@ -74,12 +82,38 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
   ngOnInit() {
 
-    this.dogService.getDogAll(1, 100).subscribe(res => {
-      this.activatedRoute.params.subscribe((params: Params) => {
-        this.dogSelected = this.dogService.getDogByName(params['id'], res['array']);
-        console.log('selecionado', this.dogSelected);
+    this.galleryOptions = [
+      {
+        width: '600px',
+        height: '400px',
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide
+      },
+      // max-width 800
+      {
+        breakpoint: 800,
+        width: '100%',
+        height: '600px',
+        imagePercent: 80,
+        thumbnailsPercent: 20,
+        thumbnailsMargin: 20,
+        thumbnailMargin: 20
+      },
+      // max-width 400
+      {
+        breakpoint: 400,
+        preview: false
+      }
+    ];
 
-      });
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.dogService.getDogByName(params.id)
+        .subscribe(res => {
+          this.dogSelected = res[0];
+          this.dogImages = this.definePictures(res[0].pictureObject.pictures);
+        }, err => {
+          console.log(err);
+        });
     });
   }
 
@@ -164,7 +198,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   }
 
   ngAfterViewInit() {
-    this.scrollToBottom();
+    //this.scrollToBottom();
   }
 
   private scrollToBottom(): void {
@@ -190,24 +224,31 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
+  private definePictures(images): Array<NgxGalleryImage> {
+    console.log('images', images);
+    const arrayImage = [];
 
-  /*  end  */
+    images.forEach(element => {
+      console.log('url', element.url);
+      const img = {};
+      img['small'] = element.url;
+      img['medium'] = element.url;
+      img['big'] = element.url;
+      img['description'] = element.label;
 
-  public teste2() {
+      arrayImage.push(img);
+    });
+    return arrayImage;
+  }
 
-    this.open = !this.open;
-    /*   if (!this.open) {
-        this.animate();
-      } else {
-        this.renderer.removeClass('.demo__buttons', 'step-1 step-0 step-3 step-2');
-        this.open = false;
-        this.curStep = 0;
-      } */
+  /* view-controller */
 
-
+  public previousPage() {
+    this._location.back();
   }
 
 
 
+  /* private methods */
 
 }

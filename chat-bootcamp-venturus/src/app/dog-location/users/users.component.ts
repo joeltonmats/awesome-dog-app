@@ -71,14 +71,13 @@ export class UsersComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this._dogService.getDogAll(pageNumber, qtdByPage)
       .subscribe(res => {
-        if (res['array'].length !== 0) {
-          this.dogs = this.dogs ? this.dogs.concat(res['array']) : res['array'];
-          console.log("dsdsdsddddddddddddddd", res);
+        if (res.length !== 0) {
+          this.dogs = this.dogs ? this.dogs.concat(res) : res;
         } else {
           this.isResultComplete = true;
         }
         this.isLoading = false;
-      })
+      });
   }
 
 }
