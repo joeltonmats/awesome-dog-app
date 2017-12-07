@@ -38,8 +38,8 @@
     font-size: 1rem;
     line-height: 1.2;
     border-radius: 3px;
-    border: 3px solid #343436;
-    background: #343436;
+    border: 3px solid #ff0065;
+    background: #ff0065;
     color: white;
     cursor: pointer;
     white-space: nowrap;
@@ -67,7 +67,7 @@
 }
 
 #mini-chat .button:hover {
-    background: #4d4d50;
+    background: #FD3E81;
 }
 
 #mini-chat .button:active {
