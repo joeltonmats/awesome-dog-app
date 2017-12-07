@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatItemComponent } from './chat/chat-item/chat-item.component';
-import { ChatHeaderComponent } from './chat/chat-header/chat-header.component';
 import { routing } from './app.routes';
 import { SobreComponent } from './sobre/sobre.component';
 import { ConnectionService } from './sobre/connection.service';
@@ -35,7 +34,6 @@ import { NgxGalleryModule } from 'ngx-gallery';
     AppComponent,
     ChatComponent,
     ChatItemComponent,
-    ChatHeaderComponent,
     SobreComponent,
     DogLocationComponent,
     CountriesComponent,
@@ -52,7 +50,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
     HttpClientModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyAx9FVTqx9XB_EBAv2vCjOIQ3jQOu6aMM4'
     }),
     BrowserAnimationsModule,
     YoutubePlayerModule,

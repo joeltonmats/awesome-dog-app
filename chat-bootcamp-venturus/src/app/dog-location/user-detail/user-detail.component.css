@@ -703,7 +703,7 @@
 
     #mini-chat .input {
         position: relative;
-        bottom: 0;
+        bottom: 0px;
         width: 100%;
         padding: 20px;
         background: #0a0a0a;
@@ -741,6 +741,7 @@
     .conversation__wrap {
         max-height: 208px;
         overflow-y: scroll;
+        min-height: 225px;
     }
 
     .btn-circle {
@@ -752,7 +753,7 @@
         line-height: 1.428571429;
         border-radius: 15px;
         position: fixed;
-        bottom: 0;
+        bottom: 20px;
         left: 2.5%;
         z-index: 1000;
     }

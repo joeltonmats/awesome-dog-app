@@ -11,9 +11,7 @@ export class ChatItemComponent {
 
   @Input() public message: Object;
 
-  constructor(private chatService: ChatService) {
-    console.log(this.message);
-  }
+  constructor(private chatService: ChatService) { }
 
   public minhaMensagem(): boolean {
     return this.message['author'] === this.chatService.nomeUsuario;

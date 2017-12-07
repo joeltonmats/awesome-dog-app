@@ -1,8 +1,9 @@
 <section id="country-cities">
 
     <h1> {{ title + ' ' + country.name}}</h1>
-    <agm-map [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="marker.city.lat" [longitude]="marker.city.lng" [title]="marker.title" *ngFor="let marker of citiesMarker "></agm-marker>
+    <agm-map [latitude]="lat" [longitude]="lng" [styles]="mapStyle" [maxZoom]="8" [minZoom]="4" [fitBounds]="fitBound">
+        <agm-marker [latitude]="marker.city.lat" [longitude]="marker.city.lng" [title]="marker.title" *ngFor="let marker of citiesMarker "
+            [iconUrl]="'../../../assets/img/dog (2).png'" (markerClick)="findDogs(marker)"></agm-marker>
     </agm-map>
 
     <app-users [city]="citySelected"></app-users>

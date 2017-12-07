@@ -1,5 +1,6 @@
 import { City, CityMarker, Country } from '../../services/model.service';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-country-cities',
@@ -8,17 +9,19 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class CountryCitiesComponent implements OnInit, OnChanges {
 
-  title: string = 'Cuty dogs in ';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  public title = 'Awesome dogs in ';
+  public citiesMarker: CityMarker[] = [];
+  public citySelected: City;
+  public mapStyle: Array<any>;
+  public fitBound: any;
+
   @Input() country: Country;
   @Input() cities: City[];
 
-  public citiesMarker: CityMarker[] = [];
-  public citySelected: City;
-
-
-  constructor() { }
+  constructor(private mapsAPILoader: MapsAPILoader) {
+    this.getMapStyle();
+    this.fitBound = {};
+  }
 
   ngOnInit() {
     this.country = new Country('', '');
@@ -26,7 +29,11 @@ export class CountryCitiesComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.createMarks();
-    this.createMarks();
+    this.defineBounds();
+  }
+
+  public findDogs(marker: CityMarker) {
+    this.citySelected = marker.city;
   }
 
   private createMarks() {
@@ -37,6 +44,56 @@ export class CountryCitiesComponent implements OnInit, OnChanges {
         this.citiesMarker.push(cityMarker);
       }
     }
+  }
+
+  private defineBounds() {
+    if (this.citiesMarker && this.citiesMarker.length > 0) {
+      this.mapsAPILoader.load().then(() => {
+        this.fitBound = new window['google'].maps.LatLngBounds();
+        this.citiesMarker.forEach((cityMarker: CityMarker) => {
+          this.fitBound.extend(new window['google'].maps.LatLng(cityMarker.city.lat, cityMarker.city.lng));
+        });
+      });
+    }
+  }
+
+
+
+  private getMapStyle() {
+    this.mapStyle =
+      [
+        {
+          'stylers': [
+            {
+              'hue': '#2c3e50'
+            },
+            {
+              'saturation': 250
+            }
+          ]
+        },
+        {
+          'featureType': 'road',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'lightness': 50
+            },
+            {
+              'visibility': 'simplified'
+            }
+          ]
+        },
+        {
+          'featureType': 'road',
+          'elementType': 'labels',
+          'stylers': [
+            {
+              'visibility': 'off'
+            }
+          ]
+        }
+      ];
   }
 
 }

@@ -1,4 +1,4 @@
-<section class="introduction-area">
+<section class="introduction-area" #introsection>
 
   <!-- back button -->
   <button type="button" class="btn btn-danger btn-circle btn-lg" title="back" (click)="previousPage()">
@@ -64,7 +64,7 @@
               <div class="col-md-6 primary-img">
                 <img [src]="dogSelected.pictureObject.profile_picture.url" class="rounded">
                 <div class="text-center">
-                  <button href="#gallery " class="btn btn-md btn-primary " (click)="t.select('gallery-tab')">See my photos</button>
+                  <button href="#gallery " class="btn btn-md btn-success " (click)="t.select('gallery-tab')">See my photos</button>
                 </div>
               </div>
               <div class="col-md-6">
@@ -114,7 +114,7 @@
       <section id="gallery" class="home-section text-center bg-gray">
         <div class="container gallery-container">
 
-          <h1>{{dogSelected.owner.name}} 's Gallery</h1>
+          <h1>{{dogSelected.name}} 's Gallery</h1>
 
           <p class="page-description text-center">Happy Day :)</p>
 
@@ -135,7 +135,7 @@
     <ng-template ngbTabTitle>Play with me</ng-template>
     <ng-template ngbTabContent>
       <div class="play-with-me">
-        <h2>Below threre is my favourite picture. Try play with a little clicking how times you can</h2>
+        <h2>This is my favorite picture. Try play with it clicking as fast you can</h2>
 
         <div class="my-favourite-picture" [ngStyle]="{'background-image': 'url(' + (dogSelected ? dogSelected.pictureObject.pictures[0].url: 'http://www.publicdomainpictures.net/pictures/70000/velka/old-white-background.jpg') + ')'}">
           <div class="row button-click">
@@ -164,34 +164,19 @@
     <ng-template ngbTabContent>
       <section id="my-videos" style="margin-top:30px">
         <div class="row">
-          <div class="col-md-3 video-embed">
-            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
-          </div>
-          <div class="col-md-3 video-embed">
-            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
-          </div>
-          <div class="col-md-3 video-embed">
-            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
-          </div>
-          <div class="col-md-3 video-embed">
-            <youtube-player [videoId]="'K5g3j8r5DPE'"></youtube-player>
+          <div class="col-md-3 video-embed" *ngFor="let video of dogSelected.home_videos">
+            <youtube-player [videoId]="video.video_id"></youtube-player>
           </div>
         </div>
       </section>
     </ng-template>
   </ngb-tab>
-  <ngb-tab title="Favourite Places" [disabled]="true">
-    <ng-template ngbTabContent>
-      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
-        cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-        synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
-        aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-    </ng-template>
-  </ngb-tab>
 </ngb-tabset>
 
 
-<section id="mini-chat">
+<app-chat [owner]="dogSelected ?dogSelected.owner.name: ''"></app-chat>
+
+<!-- <section id="mini-chat">
 
   <button type="button" class="button js-trigger" (click)="openDialog = true" *ngIf="!openDialog">My Onwer</button>
 
@@ -201,11 +186,12 @@
       <span class="close-msg">&times;</span>
     </div>
     <ul class="conversation__wrap" #scrollMe>
-      <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens"></app-chat-item>
+      <app-chat-item [message]="mensagemObj" *ngFor="let mensagemObj of mensagens">
+      </app-chat-item>
     </ul>
 
     <input class="input" type="text" placeholder="Enter Message" (ngModel)="mensagemInserir" (keyup.enter)="enviaMensagem($event)"
     />
   </div>
 
-</section>
+</section> -->

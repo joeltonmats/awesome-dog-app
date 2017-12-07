@@ -48,6 +48,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   public galleryImages: NgxGalleryImage[];
 
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
+  @ViewChild('introsection') private temp: ElementRef;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -110,6 +111,9 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
       this.dogService.getDogByName(params.id)
         .subscribe(res => {
           this.dogSelected = res[0];
+          // some cool music
+          this.dogSelected['home_videos'].unshift({ 'video_id': '1tjFV8NhJbo' },
+            { 'video_id': 'GzU8KqOY8YA' }, { 'video_id': '1y6smkh6c-0' });
           this.dogImages = this.definePictures(res[0].pictureObject.pictures);
         }, err => {
           console.log(err);
@@ -198,7 +202,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   }
 
   ngAfterViewInit() {
-    //this.scrollToBottom();
+    this.temp.nativeElement.focus();
   }
 
   private scrollToBottom(): void {
@@ -207,29 +211,25 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
   public enviaMensagem(event: any) {
 
-    console.log('entrou', event.target.value);
-
-    const obj = { message: event.target.value, author: this._chatService.nomeUsuario };
-    this._chatService.server.emit('messages', obj);
-
+    const objTyped = { message: event.target.value, author: this._chatService.nomeUsuario };
     const objRes = { message: this.getRandomItem(this.messageResponses), author: 'Unknowkn' };
-    this._chatService.server.emit('messages', objRes);
+
+    this.mensagens.push(objTyped);
+    this.mensagens.push(objRes);
 
     this.mensagemInserir = '';
     event.target.value = null;
   }
 
   private getRandomItem(arr) {
-    console.log('arrrrrrrrrr', arr);
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
   private definePictures(images): Array<NgxGalleryImage> {
-    console.log('images', images);
+
     const arrayImage = [];
 
     images.forEach(element => {
-      console.log('url', element.url);
       const img = {};
       img['small'] = element.url;
       img['medium'] = element.url;
@@ -238,6 +238,7 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
 
       arrayImage.push(img);
     });
+
     return arrayImage;
   }
 
@@ -246,9 +247,5 @@ export class UserDetailComponent implements OnInit, AfterViewChecked, AfterViewI
   public previousPage() {
     this._location.back();
   }
-
-
-
-  /* private methods */
 
 }

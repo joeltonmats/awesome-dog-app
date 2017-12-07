@@ -109,6 +109,10 @@
     position: absolute;
 }
 
+.card {
+    margin: 10px 0;
+}
+
 .card .card.caption h1 {
     text-transform: uppercase;
 }
@@ -124,7 +128,7 @@
 }
 
 .fa-spinner:before {
-    color: green;
+    color: #FD3E81;
 }
 
 .hovereffect {

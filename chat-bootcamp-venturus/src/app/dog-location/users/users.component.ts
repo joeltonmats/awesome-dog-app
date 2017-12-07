@@ -1,7 +1,7 @@
 import { Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { City, Dog } from '../../services/model.service';
-import { DogService } from "../../services/dog.services";
+import { DogService } from '../../services/dog.services';
 
 import {
   trigger,
@@ -30,7 +30,7 @@ import {
     ])
   ]
 })
-export class UsersComponent implements OnInit, OnChanges {
+export class UsersComponent implements OnChanges {
 
   @Input() city: City;
   public dogs: Array<Dog>;
@@ -38,22 +38,20 @@ export class UsersComponent implements OnInit, OnChanges {
   public captionStateName: string;
   public isLoading: boolean;
   public isResultComplete: boolean;
-  public pageNumber: number = 1;
-  public qtdByPage: number = 8;
+  public pageNumber = 1;
+  public qtdByPage = 8;
 
   constructor(
     private router: Router,
     private _dogService: DogService) {
     this.captionStateName = 'inactive';
   }
-
-  ngOnInit() {
-    this.getDogAll(this.pageNumber, this.qtdByPage);
-  }
-
   ngOnChanges() {
-    //to-do: subscribe users by city
-    //throw new Error("Method not implemented.");
+    console.log('ngOnChanges');
+    if (this.city) {
+      this.dogs = [];
+      this.getDogAll(this.pageNumber, this.qtdByPage);
+    }
   }
 
   public userDetail(dog: Dog) {
